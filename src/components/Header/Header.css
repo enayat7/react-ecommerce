@@ -1,0 +1,30 @@
+/* Navbar.css */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #3498db;
+    padding: 10px;
+  }
+  
+  .nav-item {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px;
+    transition: color 0.3s;
+  }
+  
+  .nav-item:hover {
+    color: #ecf0f1;
+  }
+  
+  .spacer {
+    flex-grow: 1;
+  }
+  
+  .cart-button {
+    background-color: #e74c3c;
+    border-radius: 4px;
+    padding: 10px 15px;
+  }
+  
