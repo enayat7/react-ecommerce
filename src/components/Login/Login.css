@@ -6,10 +6,18 @@
   height: 100vh;
   
 }
+.login{
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #333;
+}
 
 .login-form {
   width: 300px;
   padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border: 1px solid #ccc;
   border-radius: 8px;
 }

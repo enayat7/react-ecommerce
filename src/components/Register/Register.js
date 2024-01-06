@@ -1,7 +1,8 @@
 // RegistrationForm.jsx
 import React, { useState } from 'react';
-// import './Register.css';
-import { Navigate } from 'react-router-dom';
+import './Register.css';
+import { Link, Navigate } from 'react-router-dom';
+// import Modal from 'react-modal';
 
 const Register = () => {
 
@@ -11,19 +12,46 @@ const Register = () => {
     email: '',
     password: '',
   });
+  const [showPopup, setShowPopup] = useState(false);
+
+  const handlePopup = () => {
+    setShowPopup(true);
+    setTimeout(() => {
+      setShowPopup(false);
+    }, 2000);
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
-  const handl  = async () =>{
-     Navigate('/')
-  }
   const handleSubmit = async(e) => {
     e.preventDefault();
-    // Add your registration logic here
-    console.log('Form submitted:', formData);
-    Navigate('/')
+
+    try {
+      const response = await fetch('http://localhost:8000/api/v1/users/register',{
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+      console.log(response.status==201)
+      {
+        handlePopup();
+        setFormData({
+          fullname: '',
+          username: '',
+          email: '',
+          password: '',
+        })
+      }
+
+      
+    } catch (error) {
+      console.log(error)
+    }
+
   };
 
   return (
@@ -42,8 +70,10 @@ const Register = () => {
         <label htmlFor="password">Password:</label>
         <input type="password" id="password" name="password" value={formData.password} onChange={handleChange} required />
 
-        <button type="submit"  >Register</button>
+        <button type="submit" >Register</button>
+        <p>Already have an account? <Link to="/login">click here</Link> </p>
       </form>
+      {showPopup && <div className="popup">Registered successfully</div>}
     </div>
   );
 };

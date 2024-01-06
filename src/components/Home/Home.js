@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import ProductCard from '../ProductCard/ProductCard';
 import './Home.css';
+import { useAuth } from '../Context/AuthContext';
 
 const Home = () => {
 
@@ -9,11 +10,17 @@ const Home = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [filterPrice, setFilterPrice] = useState('0');
   const [filteredProducts,setFilterProducts] = useState([])
-
+  const { token } = useAuth()
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response =await axios.get('https://dummyjson.com/products');
+        const response =await axios.get('http://localhost:8000/api/v1/users/allproduct',{
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`,
+          },
+        });
         const data = response.data.products
         setProduct(data);
         } catch (error) {
@@ -65,6 +72,7 @@ const Home = () => {
           thumbnail = {element.thumbnail}
           discription={element.discription}
           discountPercentage = {element.discountPercentage}
+          Id= {element._id}
           />
         ))}
       </div>

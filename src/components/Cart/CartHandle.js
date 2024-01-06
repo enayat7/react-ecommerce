@@ -9,7 +9,7 @@ import Icon from "react-crud-icons";
 const  CartHandle = ({name, price,thumbnail,handleIncrement,handleDecrement,removeFromCart,index, quantity}) =>{
 
   return (
-    <div className="product-container">
+    <div className="product-containers">
     <span className="product-image-container">
       <img
         src={thumbnail}
@@ -20,10 +20,10 @@ const  CartHandle = ({name, price,thumbnail,handleIncrement,handleDecrement,remo
     <div className="product-details">
       <p>{name}</p>
       <p>${price}</p>
-      <div className="quantity-controls">
-        <button onClick={() =>{ handleDecrement(index)} }>-</button>
+      <div className="quantity-control">
+        <button className='buttons' onClick={() =>{ handleDecrement(index)} }>-</button>
         <span >{quantity}</span>
-        <button onClick={() => {handleIncrement(index)} }>+</button>
+        <button className='buttons' onClick={() => {handleIncrement(index)} }>+</button>
         <Icon
             name="delete"
             tooltip="delete"

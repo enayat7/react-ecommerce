@@ -42,7 +42,7 @@ export default function Cart() {
         newtotalAmount -= cartItem[index].price*cartItem[index].quantity;
         newproductlist.splice(index, 1);
         
-        console.log(newproductlist)
+        // console.log(newproductlist)
         setCartItem(newproductlist);
         setTotalPrice(newtotalAmount);
     };

@@ -1,36 +1,37 @@
-/* Add this to your CSS file or style component */
 
-.product-container {
+.product-containers {
     display: flex;
     align-items: center;
     margin: 20px;
   }
   
   .product-image-container {
-    flex: 0 0 auto; /* Let the image container be the fixed size */
+    flex: 0 0 auto; 
     margin-right: 20px;
   }
   
   .product-image {
-    width: 250px;
+    
+    width: 150px;
     height: 150px;
-    object-fit: cover; /* Maintain aspect ratio while covering the container */
+    object-fit: cover;
   }
   
   .product-details {
-    flex: 1; /* Allow the product details to grow and take the remaining space */
+    flex: 1; 
   }
   
-  .quantity-controls {
+  .quantity-control {
     display: flex;
     align-items: center;
     margin-top: 10px;
   }
   
-  button {
+  .buttons {
     padding: 8px;
     margin: 0 5px;
     cursor: pointer;
+    width: 5%;
   }
   
   .add-to-cart {
@@ -39,5 +40,11 @@
     border: none;
     padding: 10px;
     cursor: pointer;
+  }
+
+  @media (max-width: 600px) {
+    product-container {
+      flex-direction: column; /* Change the flex direction to column */
+    }
   }
   
